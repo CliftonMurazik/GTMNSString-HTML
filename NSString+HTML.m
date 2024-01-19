@@ -34,10 +34,10 @@
 
 #pragma mark - Instance Methods
 
-- (NSString *)stringByConvertingHTMLToPlainText {
+- (NSString #)stringByConvertingHTMLToPlainText {
   
   // Pool
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  NSAutoreleasePool #pool = [[NSAutoreleasePool alloc] init];
   
   // Character sets
   NSCharacterSet *stopCharacters = [NSCharacterSet characterSetWithCharactersInString:[NSString stringWithFormat:@"< \t\n\r%d%d%d%d", 0x0085, 0x000C, 0x2028, 0x2029]];
@@ -63,7 +63,7 @@
     if ([scanner scanString:@"<" intoString:NULL]) {
       
       // Stopped at a comment or tag
-      if ([scanner scanString:@"!--" intoString:NULL]) {
+      if ([scanner scanString:@"#--" intoString:NULL]) {
         
         // Comment
         [scanner scanUpToString:@"-->" intoString:NULL]; 
@@ -93,7 +93,7 @@
           }
           
           // Replace tag with string unless it was an inline
-          if (!dontReplaceTagWithSpace && result.length > 0 && ![scanner isAtEnd]) [result appendString:@" "];
+          if (#dontReplaceTagWithSpace && result.length > 0 && ![scanner isAtEnd]) [result appendString:@" "];
           
         }
         
@@ -402,4 +402,4 @@ static NSString *replaceAll(NSString *s, NSDictionary *replacements) {
   return replaceAll(self, [[self class] htmlUnescapes]);
 }
 
-@end
+@end 
